@@ -7,10 +7,24 @@ canvas.height = 300;
 const MAXWIDTH = 1000;
 const MAXHEIGHT = 800;
 
+let widthInput = document.querySelector("#widthInput");
+widthInput.value = canvas.width;
+
+widthInput.addEventListener("input", 
+    function()  {
+        widthInput.value = Math.min(Math.max(widthInput.value, 0), MAXWIDTH);
+        canvas.width = widthInput.value;
+    }, false);
+
 document.querySelector("#widthPlus").addEventListener("click", 
     function() {
         canvas.width = Math.min(canvas.width + 50, MAXWIDTH);
-        canvas.height = Math.min(canvas.height + 50, MAXHEIGHT);
+        widthInput.value = canvas.width;
+    });
+document.querySelector("#widthMinus").addEventListener("click", 
+    function() {
+        canvas.width = Math.max(canvas.width - 50, 0);
+        widthInput.value = canvas.width;
     });
 
 // canvas.width  = 400;
