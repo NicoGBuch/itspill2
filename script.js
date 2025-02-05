@@ -7,8 +7,21 @@ canvas.height = 300;
 const MAXWIDTH = 1000;
 const MAXHEIGHT = 800;
 
+let mouseX = 0;
+let mouseY = 0;
+
 let widthInput = document.querySelector("#widthInput");
 widthInput.value = canvas.width;
+
+canvas.addEventListener("mousemove", function(evt) {
+    var rect = canvas.getBoundingClientRect();
+    mouseX = evt.clientX - rect.left;
+    mouseY = evt.clientY - rect.top;
+
+    ctx.lineTo(mouseX, mouseY);
+    ctx.stroke();
+});
+  
 
 widthInput.addEventListener("input", 
     function()  {
