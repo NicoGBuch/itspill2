@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,5 +8,34 @@
 }
 
 body {
-    background-color: #eaedcc;
+    background-color: lavenderblush;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#drawingGrid {
+    margin: auto;
+    /* display: grid;
+    grid-template-columns: 100 100; */
+}
+
+button {
+    background-color: none;
+    font-size: 28px;
+    font-weight: 700;
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Jersey 15';
+    margin: 20px 0;
+    font-size: 42px;
+    font-weight: 500;
+}
+
+canvas {
+    border: 1px solid black;
 }
