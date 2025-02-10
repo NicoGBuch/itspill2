@@ -9,17 +9,34 @@ const MAXHEIGHT = 800;
 
 let mouseX = 0;
 let mouseY = 0;
+let mouseDown = false;
+let firstMouseDown = false;
 
 let widthInput = document.querySelector("#widthInput");
 widthInput.value = canvas.width;
+
+canvas.addEventListener("mousedown", function(evt) {
+    mouseDown = true;
+    firstMouseDown = true;
+})
+canvas.addEventListener("mouseup", function(evt) {
+    mouseDown = false;
+})
 
 canvas.addEventListener("mousemove", function(evt) {
     var rect = canvas.getBoundingClientRect();
     mouseX = evt.clientX - rect.left;
     mouseY = evt.clientY - rect.top;
 
-    ctx.lineTo(mouseX, mouseY);
-    ctx.stroke();
+    if (firstMouseDown) {
+        firstMouseDown = false;
+        ctx.moveTo(mouseX, mouseY);
+    }
+
+    if (mouseDown) {
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+    }
 });
   
 
